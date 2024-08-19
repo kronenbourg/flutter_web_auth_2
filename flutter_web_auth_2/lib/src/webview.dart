@@ -69,5 +69,8 @@ class FlutterWebAuth2WebViewPlugin extends FlutterWebAuth2Platform {
   }
 
   @override
-  Future<void> clearAllDanglingCalls() async {}
+  Future<void> clearAllDanglingCalls() async {
+    print('webview closed on clearAllDanglingCalls');
+    _webview?.close();
+  }
 }
