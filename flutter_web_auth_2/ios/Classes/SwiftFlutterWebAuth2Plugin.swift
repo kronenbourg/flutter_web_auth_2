@@ -132,7 +132,7 @@ public class SwiftFlutterWebAuth2Plugin: NSObject, FlutterPlugin {
         } else if call.method == "cleanUpDanglingCalls" {
             var rootViewController: UIViewController? = nil
             rootViewController = UIApplication.shared.delegate?.window??.rootViewController as? FlutterViewController
-            rootViewController.dismiss()
+            rootViewController?.dismiss(false)
             // we do not keep track of old callbacks on iOS, so nothing to do here
             result(nil)
         } else {
