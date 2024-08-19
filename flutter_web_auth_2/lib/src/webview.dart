@@ -67,8 +67,6 @@ class FlutterWebAuth2WebViewPlugin extends FlutterWebAuth2Platform {
       ),
     );
     webview!.launch(url);
-    webview?.close();
-    webview = null;
     return c.future;
   }
 
