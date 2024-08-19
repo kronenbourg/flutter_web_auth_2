@@ -38,14 +38,11 @@ class FlutterWebAuth2WebViewPlugin extends FlutterWebAuth2Platform {
       ),
     );
 
-    if (options.containsKey('timeout')) {
-      print('Timeout set');
-      Timer(Duration(seconds: options['timeout']), () {
-        print('closed webview on timeout');
-        webview?.close();
-        webview = null;
-      });
-    }
+    Timer(const Duration(seconds: 3), () {
+      print('closed webview on timeout');
+      webview?.close();
+      webview = null;
+    });
 
     webview!.addOnUrlRequestCallback((url) {
       final uri = Uri.parse(url);
