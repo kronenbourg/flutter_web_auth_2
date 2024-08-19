@@ -130,9 +130,10 @@ public class SwiftFlutterWebAuth2Plugin: NSObject, FlutterPlugin {
                 result(FlutterError(code: "FAILED", message: "This plugin does currently not support iOS lower than iOS 11", details: nil))
             }
         } else if call.method == "cleanUpDanglingCalls" {
+            var rootViewController: UIViewController? = nil
+            rootViewController = UIApplication.shared.delegate?.window??.rootViewController as? FlutterViewController
+            rootViewController.dismiss()
             // we do not keep track of old callbacks on iOS, so nothing to do here
-            result(nil)
-        } else if call.method == "cancel" {
             result(nil)
         } else {
             result(FlutterMethodNotImplemented)
