@@ -37,6 +37,16 @@ class FlutterWebAuth2WebViewPlugin extends FlutterWebAuth2Platform {
         userDataFolderWindows: (await getTemporaryDirectory()).path,
       ),
     );
+
+    if (options.containsKey('timeout')) {
+      print('Timeout set');
+      Timer(Duration(seconds: options['timeout']), () {
+        print('closed webview on timeout');
+        webview?.close();
+        webview = null;
+      });
+    }
+
     webview!.addOnUrlRequestCallback((url) {
       final uri = Uri.parse(url);
       if (uri.scheme == callbackUrlScheme) {
