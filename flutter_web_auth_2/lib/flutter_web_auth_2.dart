@@ -28,7 +28,8 @@ class _OnAppLifecycleResumeObserver extends WidgetsBindingObserver {
 class FlutterWebAuth2 {
   static final RegExp _schemeRegExp = RegExp(r'^[a-z][a-z\d+.-]*$');
 
-  static FlutterWebAuth2Platform get _platform =>
+  /// Gets the instance of the platform.
+  static FlutterWebAuth2Platform get platform =>
       FlutterWebAuth2Platform.instance;
 
   static final _OnAppLifecycleResumeObserver _resumedObserver =
@@ -78,7 +79,7 @@ class FlutterWebAuth2 {
       _resumedObserver,
     ); // safety measure so we never add this observer twice
     WidgetsBinding.instance.addObserver(_resumedObserver);
-    return _platform.authenticate(
+    return platform.authenticate(
       url: url,
       callbackUrlScheme: callbackUrlScheme,
       options: options.toJson(),
@@ -90,7 +91,7 @@ class FlutterWebAuth2 {
   /// comes the callback will dangle around forever. This can be called to
   /// terminate all `authenticate` calls with an error.
   static Future<void> _cleanUpDanglingCalls() async {
-    await _platform.clearAllDanglingCalls();
+    await platform.clearAllDanglingCalls();
     WidgetsBinding.instance.removeObserver(_resumedObserver);
   }
 }
