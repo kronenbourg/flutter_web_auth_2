@@ -120,8 +120,7 @@ public class SwiftFlutterWebAuth2Plugin: NSObject, FlutterPlugin {
                     }
                 }
 
-                // session.start()
-                // session.cancel()
+                session.start()
                 sessionToKeepAlive = session
             } else if #available(iOS 11, *) {
                 let session = SFAuthenticationSession(url: url, callbackURLScheme: callbackURLScheme, completionHandler: completionHandler!)
@@ -133,6 +132,10 @@ public class SwiftFlutterWebAuth2Plugin: NSObject, FlutterPlugin {
         } else if call.method == "cleanUpDanglingCalls" {
             // we do not keep track of old callbacks on iOS, so nothing to do here
             result(nil)
+        } else if call.method == "cancel" {
+            // we do not keep track of old callbacks on iOS, so nothing to do here
+            session.cancel()
+            sessionToKeepAlive = nil
         } else {
             result(FlutterMethodNotImplemented)
         }
