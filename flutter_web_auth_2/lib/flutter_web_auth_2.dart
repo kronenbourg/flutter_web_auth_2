@@ -18,8 +18,11 @@ class _OnAppLifecycleResumeObserver extends WidgetsBindingObserver {
 
   @override
   Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
+    debugPrint('Current state = $state');
     if (state == AppLifecycleState.resumed) {
       await onResumed();
+    } else if (state == AppLifecycleState.detached) {
+      debugPrint('detached');
     }
   }
 }
