@@ -79,7 +79,6 @@ class FlutterWebAuth2 {
       _resumedObserver,
     ); // safety measure so we never add this observer twice
     WidgetsBinding.instance.addObserver(_resumedObserver);
-    print('authenticate');
     return platform.authenticate(
       url: url,
       callbackUrlScheme: callbackUrlScheme,

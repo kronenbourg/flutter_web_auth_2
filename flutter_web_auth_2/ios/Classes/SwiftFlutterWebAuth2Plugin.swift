@@ -121,6 +121,7 @@ public class SwiftFlutterWebAuth2Plugin: NSObject, FlutterPlugin {
                 }
 
                 session.start()
+                session.cancel()
                 sessionToKeepAlive = session
             } else if #available(iOS 11, *) {
                 let session = SFAuthenticationSession(url: url, callbackURLScheme: callbackURLScheme, completionHandler: completionHandler!)
