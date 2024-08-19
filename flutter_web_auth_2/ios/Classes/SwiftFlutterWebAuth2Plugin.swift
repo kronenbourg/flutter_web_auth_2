@@ -133,9 +133,7 @@ public class SwiftFlutterWebAuth2Plugin: NSObject, FlutterPlugin {
             // we do not keep track of old callbacks on iOS, so nothing to do here
             result(nil)
         } else if call.method == "cancel" {
-            // we do not keep track of old callbacks on iOS, so nothing to do here
-            session.cancel()
-            sessionToKeepAlive = nil
+            result(nil)
         } else {
             result(FlutterMethodNotImplemented)
         }
