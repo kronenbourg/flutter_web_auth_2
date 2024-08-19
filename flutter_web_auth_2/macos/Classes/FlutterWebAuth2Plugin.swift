@@ -72,8 +72,6 @@ public class FlutterWebAuth2Plugin: NSObject, FlutterPlugin, ASWebAuthentication
         } else if call.method == "cleanUpDanglingCalls" {
             // we do not keep track of old callbacks on macOS, so nothing to do here
             result(nil)
-        } else if call.method == "cancel" {
-            result(nil)
         } else {
             result(FlutterMethodNotImplemented)
         }
